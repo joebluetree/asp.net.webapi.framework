@@ -2,9 +2,10 @@
 This repository is for asp.net web api Framework code
 
 
-1. Install Cors Package
-Microsoft.Owin.Cors
-Add below code in startup.cs
+1. Install Cors Package<br />
+Microsoft.Owin.Cors<br />
+then add below code in startup.cs<br />
+
 ```
 app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
