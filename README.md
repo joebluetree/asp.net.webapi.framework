@@ -2,9 +2,9 @@
 This repository is for asp.net web api Framework code
 
 
-1. Install Cors Package<br />
-Microsoft.Owin.Cors<br />
-then add below code in startup.cs<br />
+1. Install Cors Package<br/>
+Microsoft.Owin.Cors<br/>
+then add below code in startup.cs<br/>
 
 ```
 app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
@@ -69,3 +69,53 @@ public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwner
 
 ```
 
+
+
+4. Now add a class under controller <br/>
+Then add below code to setup web api methods
+
+```
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace UserAdmin.Controllers
+{
+    //[AllowAnonymous]
+    [Authorize]
+    [RoutePrefix("api/user")]
+    public class UserController : ApiController
+    {
+        [HttpGet]
+        [Route("showmessage")]
+        public IHttpActionResult ShowMessage()
+        {
+            try
+            {
+                //throw new Exception("Error");
+               return Ok("Hello");
+            }
+            catch ( Exception Ex)
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest, Ex.Message.ToString()));
+            }
+        }
+        [HttpGet]
+        [Route("showmessage2")]
+        public IHttpActionResult showmessage2( [FromUri] string msg,  [FromUri] string msg2)
+        {
+            try
+            {
+                //throw new Exception("Error");
+                return Ok(msg + " " + msg2);
+            }
+            catch (Exception Ex)
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest, Ex.Message.ToString()));
+            }
+        }
+
+    }
+}
+```
