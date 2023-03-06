@@ -1,6 +1,6 @@
 # Token Generation
 
-1. Install Cors Package<br/>
+## 1. Install Cors Package<br/>
 Microsoft.Owin.Cors<br/>
 then add below code in startup.cs<br/>
 
@@ -9,7 +9,7 @@ app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
 ```
 
-2. Update below code in startup.auth.cs file
+## 2. Update below code in startup.auth.cs file
 ```
 using System;
 using Microsoft.Owin;
