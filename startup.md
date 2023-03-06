@@ -111,17 +111,21 @@ namespace WebApp.Providers
 
                 var userName = context.UserName;
                 var password = context.Password;
-                if (userName == "admin" && password == "admin")
+
+                UserService service = new UserService();
+                User user = service.ValdiateUser(userName, password);
+                
+                if (user != null)
                 {
                     var identity = new ClaimsIdentity(Startup.OAuthOptions.AuthenticationType);
-                    identity.AddClaim(new Claim(ClaimTypes.Sid, "283938393"));
-                    identity.AddClaim(new Claim(ClaimTypes.Name, userName));
-                    identity.AddClaim(new Claim(ClaimTypes.Email, userName));
-                    identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
+                    identity.AddClaim(new Claim(ClaimTypes.Sid, user.user_id.ToString()));
+                    identity.AddClaim(new Claim(ClaimTypes.Name, user.user_name));
+                    identity.AddClaim(new Claim(ClaimTypes.Email, user.user_email));
+                    //identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
 
                     Dictionary<string, string> data = new Dictionary<string, string>();
-                    data.Add("username", userName);
-                    data.Add("roles", "user");
+                    data.Add("username", user.user_name);
+                    //data.Add("roles", "user");
 
                     var properties = new AuthenticationProperties(data);
                     var ticket = new AuthenticationTicket(identity, properties);

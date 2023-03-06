@@ -256,6 +256,38 @@ namespace UserAdmin.Services
             }
         }
 
+
+        public User ValdiateUser(string code, string pwd)
+        {
+            User rec = null;
+            try
+            {
+                sql = " select user_id, user_code, user_name,user_password, user_email, user_is_locked, user_is_admin  ";
+                sql += " from userm where user_code = '{CODE}' and user_password = '{PWD}'";
+                sql = sql.Replace("{CODE}", code.ToUpper());
+                sql = sql.Replace("{PWD}", pwd.ToUpper());
+
+                DataTable Dt_Temp = new DataTable();
+                Dt_Temp = Connection.ExecuteQuery(sql);
+                foreach (DataRow Dr in Dt_Temp.Rows)
+                {
+                    rec = new User();
+                    rec.user_id = int.Parse(Dr["user_id"].ToString());
+                    rec.user_code = Dr["user_code"].ToString();
+                    rec.user_name = Dr["user_name"].ToString();
+                    rec.user_password = Dr["user_password"].ToString();
+                    rec.user_email = Dr["user_email"].ToString();
+                    rec.user_is_admin = Dr["user_is_admin"].ToString() == "Y" ? true : false;
+                    rec.user_is_locked = Dr["user_is_locked"].ToString() == "Y" ? true : false;
+                }
+                return rec;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
         public IDictionary<string, object> Save(int id, string Mode, User Record)
         {
             string sql = "";
@@ -295,7 +327,6 @@ namespace UserAdmin.Services
                 throw Ex;
             }
         }
-
     }
 }
 ```

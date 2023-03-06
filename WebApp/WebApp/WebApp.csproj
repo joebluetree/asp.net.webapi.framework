@@ -318,6 +318,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{695bec1a-c10b-4ab2-9925-46d307581507}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UserAdmin\UserAdmin.csproj">
       <Project>{52d0d71d-b7d4-49ba-b718-92a188306235}</Project>
       <Name>UserAdmin</Name>
