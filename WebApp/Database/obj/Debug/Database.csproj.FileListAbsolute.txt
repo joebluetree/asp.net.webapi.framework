@@ -3,3 +3,9 @@ D:\training\server\WebApp\Database\bin\Debug\Database.pdb
 D:\training\server\WebApp\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
 D:\training\server\WebApp\Database\obj\Debug\Database.dll
 D:\training\server\WebApp\Database\obj\Debug\Database.pdb
+D:\training\git-training\asp.net.webapi.framework\WebApp\Database\bin\Debug\Database.dll
+D:\training\git-training\asp.net.webapi.framework\WebApp\Database\bin\Debug\Database.pdb
+D:\training\git-training\asp.net.webapi.framework\WebApp\Database\obj\Debug\Database.csprojAssemblyReference.cache
+D:\training\git-training\asp.net.webapi.framework\WebApp\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+D:\training\git-training\asp.net.webapi.framework\WebApp\Database\obj\Debug\Database.dll
+D:\training\git-training\asp.net.webapi.framework\WebApp\Database\obj\Debug\Database.pdb

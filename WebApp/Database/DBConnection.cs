@@ -1,13 +1,4 @@
-# Data Access Layer
-
-
-<h4>Databse Connection Class</h4>
-<p>
-This class is used to read/insert/update/delete data using sql database.
-</p>
-
-```
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -131,6 +122,8 @@ namespace Database
         }
 
     }
-}
-```
 
+    
+
+
+}
