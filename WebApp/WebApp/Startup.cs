@@ -12,7 +12,7 @@ namespace WebApp
     {
         public void Configuration(IAppBuilder app)
         {
-            //Install Microsoft.Owin;
+            //Install Microsoft.Owin.Cors in Root Solution;
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             ConfigureAuth(app);
         }
