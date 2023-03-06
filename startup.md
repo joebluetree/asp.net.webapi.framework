@@ -1,7 +1,7 @@
 # Token Generation
 
 ## 1. Install Cors Package<br/>
-Microsoft.Owin.Cors<br/>
+Install Microsoft.Owin.Cors<br/>
 then add below code in startup.cs<br/>
 
 ```
