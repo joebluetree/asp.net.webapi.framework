@@ -1,4 +1,4 @@
-# Table Script And Data
+# Table Script
 
 
 ```
@@ -13,3 +13,4 @@ CREATE TABLE userm(
 );
 
 ```
+

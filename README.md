@@ -19,7 +19,11 @@ This repository is for asp.net web api Framework Project
 </p>
 
 <p>
-<a href="./sql.md">Table Script</a>
+<a href="./tables.md">Table Script</a>
+</p>
+
+<p>
+<a href="./data.md">Table Data</a>
 </p>
 
 
