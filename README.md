@@ -18,5 +18,9 @@ This repository is for asp.net web api Framework Project
 <a href="./models.md">Models</a>
 </p>
 
+<p>
+<a href="./sql.md">Table Script</a>
+</p>
+
 
 
