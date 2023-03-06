@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1433
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{9FB96130-2452-421F-81D8-E00A27AC20B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserAdmin", "UserAdmin\UserAdmin.csproj", "{52D0D71D-B7D4-49BA-B718-92A188306235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{695BEC1A-C10B-4AB2-9925-46D307581507}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FB96130-2452-421F-81D8-E00A27AC20B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB96130-2452-421F-81D8-E00A27AC20B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB96130-2452-421F-81D8-E00A27AC20B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB96130-2452-421F-81D8-E00A27AC20B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D0D71D-B7D4-49BA-B718-92A188306235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D0D71D-B7D4-49BA-B718-92A188306235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D0D71D-B7D4-49BA-B718-92A188306235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D0D71D-B7D4-49BA-B718-92A188306235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{695BEC1A-C10B-4AB2-9925-46D307581507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695BEC1A-C10B-4AB2-9925-46D307581507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695BEC1A-C10B-4AB2-9925-46D307581507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695BEC1A-C10B-4AB2-9925-46D307581507}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFBC1E36-5A63-45CD-975D-11325FA66B7D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,5 @@
+D:\training\server\WebApp\Database\bin\Debug\Database.dll
+D:\training\server\WebApp\Database\bin\Debug\Database.pdb
+D:\training\server\WebApp\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+D:\training\server\WebApp\Database\obj\Debug\Database.dll
+D:\training\server\WebApp\Database\obj\Debug\Database.pdb
