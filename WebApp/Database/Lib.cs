@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Database
+﻿namespace Database
 {
     public static class Lib
     {
@@ -17,7 +11,6 @@ namespace Database
                 Pages++;
             return Pages;
         }
-
         public static int getStartRow(int currentPageNo, int pageSize)
         {
             return  (currentPageNo - 1) * pageSize + 1;
@@ -27,7 +20,6 @@ namespace Database
         {
             return  currentPageNo * pageSize;
         }
-
         public static int FindPage(string Action, int CurrentPageNo, int Pages)
         {
             if (Action == "NEXT")
