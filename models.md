@@ -1,4 +1,12 @@
-﻿using System;
+# Database Models
+
+<h4>Models</h4>
+<p>
+Database Models
+</p>
+
+```
+using System;
 namespace Database.Models
 {
     public class User
@@ -15,5 +23,21 @@ namespace Database.Models
     {
         public Page PageData { get; set; }
     }
-
 }
+```
+
+```
+using System;
+namespace Database.Models
+{
+    public class Page
+    {
+        public int pageSize { get; set; }
+        public int pages { get; set; }
+        public int currentPageNo { get; set; }
+        public int rows { get; set; }
+        public string action { get; set; }
+    }
+}
+
+```
