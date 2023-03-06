@@ -201,9 +201,9 @@ namespace WebApp.Providers
 
 
 
-4. Add refresh token provider 
+4. Add refresh token provider<br/>
 
-<p>OAuthCustomRefreshTokenProvider.cs</p>
+OAuthCustomRefreshTokenProvider.cs
 
 
 ```
@@ -218,8 +218,6 @@ namespace WebApp.Providers
     public class OAuthCustomRefreshTokenProvider : IAuthenticationTokenProvider
     {
         private static ConcurrentDictionary<string, AuthenticationTicket> _refreshTokens = new ConcurrentDictionary<string, AuthenticationTicket>();
-
-
         public async Task CreateAsync(AuthenticationTokenCreateContext context)
         {
             var guid = Guid.NewGuid().ToString();
@@ -237,9 +235,6 @@ namespace WebApp.Providers
             // consider storing only the hash of the handle  
             context.SetToken(guid);
         }
-
-
-
         public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
             AuthenticationTicket ticket;
@@ -248,9 +243,6 @@ namespace WebApp.Providers
             if (_refreshTokens.TryRemove(context.Token, out ticket))
                 context.SetTicket(ticket);
         }
-
-
-
         public void Create(AuthenticationTokenCreateContext context)
         {
             throw new NotImplementedException();
@@ -259,7 +251,6 @@ namespace WebApp.Providers
         {
             throw new NotImplementedException();
         }
-
     }
 }
 ```
