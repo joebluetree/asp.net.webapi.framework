@@ -47,6 +47,7 @@ namespace WebApp
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
+		//RefreshTokenProvider = new OAuthCustomRefreshTokenProvider(),
             };
 
             // Enable the application to use bearer tokens to authenticate users
@@ -144,6 +145,15 @@ namespace WebApp.Providers
             ///context.Validated(ticket);
             ///context.Request.Context.Authentication.SignIn(cookiesIdentity);
         }
+
+	public override Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)
+	{
+		var newIdentity = new ClaimsIdentity(context.Ticket.Identity);
+		var newTicket = new AuthenticationTicket(newIdentity, context.Ticket.Properties);
+		context.Validated(newTicket);
+		return Task.FromResult<object>(null);
+	} 
+
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
@@ -191,49 +201,63 @@ namespace WebApp.Providers
 
 
 
-4. Now add a class under controller <br/>
-Then add below code to setup web api methods
+4. Add refresh token provider 
+
+<p>OAuthCustomRefreshTokenProvider.cs</p>
+
 
 ```
 using System;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security;
+using System.Collections.Concurrent;
+using Microsoft.Owin.Security.Infrastructure;
 
-namespace UserAdmin.Controllers
+namespace WebApp.Providers
 {
-    //[AllowAnonymous]
-    [Authorize]
-    [RoutePrefix("api/user")]
-    public class UserController : ApiController
+    public class OAuthCustomRefreshTokenProvider : IAuthenticationTokenProvider
     {
-        [HttpGet]
-        [Route("showmessage")]
-        public IHttpActionResult ShowMessage()
+        private static ConcurrentDictionary<string, AuthenticationTicket> _refreshTokens = new ConcurrentDictionary<string, AuthenticationTicket>();
+
+
+        public async Task CreateAsync(AuthenticationTokenCreateContext context)
         {
-            try
+            var guid = Guid.NewGuid().ToString();
+            /* Copy claims from previous token
+             ***********************************/
+            var refreshTokenProperties = new AuthenticationProperties(context.Ticket.Properties.Dictionary)
             {
-                //throw new Exception("Error");
-               return Ok("Hello");
-            }
-            catch ( Exception Ex)
-            {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest, Ex.Message.ToString()));
-            }
+                IssuedUtc = context.Ticket.Properties.IssuedUtc,
+                ExpiresUtc = DateTime.UtcNow.AddMinutes(40)
+            };
+            var refreshTokenTicket = await Task.Run(() => new AuthenticationTicket(context.Ticket.Identity, refreshTokenProperties));
+
+            _refreshTokens.TryAdd(guid, refreshTokenTicket);
+
+            // consider storing only the hash of the handle  
+            context.SetToken(guid);
         }
-        [HttpGet]
-        [Route("showmessage2")]
-        public IHttpActionResult showmessage2( [FromUri] string msg,  [FromUri] string msg2)
+
+
+
+        public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
-            try
-            {
-                //throw new Exception("Error");
-                return Ok(msg + " " + msg2);
-            }
-            catch (Exception Ex)
-            {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest, Ex.Message.ToString()));
-            }
+            AuthenticationTicket ticket;
+            string header = await Task.Run(() => context.OwinContext.Request.Headers["Authorization"]);
+
+            if (_refreshTokens.TryRemove(context.Token, out ticket))
+                context.SetTicket(ticket);
+        }
+
+
+
+        public void Create(AuthenticationTokenCreateContext context)
+        {
+            throw new NotImplementedException();
+        }
+        public void Receive(AuthenticationTokenReceiveContext context)
+        {
+            throw new NotImplementedException();
         }
 
     }
