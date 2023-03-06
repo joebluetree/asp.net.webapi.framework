@@ -6,6 +6,11 @@
 This class is used to query/insert/update/delete data from sql server database
 </p>
 
+
+<details>
+<summary>Show Code</summary>
+<p>
+
 ```
 using System;
 using System.Configuration;
@@ -133,6 +138,11 @@ namespace Database
     }
 }
 ```
+
+</p>
+</details>
+
+
 
 <h4>DbRecord Class</h4>
 <p>
