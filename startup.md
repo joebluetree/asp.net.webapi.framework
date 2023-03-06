@@ -77,7 +77,7 @@ namespace WebApp
 ```
 
 
-3. Changes in ApplicationOAuthProvider.cs file
+## 3. Changes in ApplicationOAuthProvider.cs file
 
 ```
 using System;
@@ -201,9 +201,9 @@ namespace WebApp.Providers
 
 
 
-4. Add refresh token provider<br/>
+## 4. Add refresh token provider<br/>
 
-OAuthCustomRefreshTokenProvider.cs
+#### OAuthCustomRefreshTokenProvider.cs
 
 
 ```
