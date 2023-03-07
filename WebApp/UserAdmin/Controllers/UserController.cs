@@ -15,7 +15,7 @@ namespace UserAdmin.Controllers
     {
         [HttpGet]
         [Route("getMessage")]
-        public IHttpActionResult Login([FromUri] string code, [FromUri] string password)
+        public IHttpActionResult getMessage([FromUri] string code, [FromUri] string password)
         {
             try
             {
