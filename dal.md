@@ -1,5 +1,8 @@
 # Data Access Layer
 
+#### Nuget Packages
+###### Microsoft.EntityFrameworkCore
+
 
 <h4>Database Connection Class</h4>
 <p>
